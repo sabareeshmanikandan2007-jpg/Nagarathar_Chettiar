@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --crimson: #a51c30;
+  --crimson-deep: #6e1020;
+  --gold: #c9a227;
+  --gold-soft: #e4c96a;
+  --parchment: #f6efd9;
+  --parchment-dark: #e8dcb8;
+  --ink: #1c1410;
+  --ink-muted: #5c4e42;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-crimson: var(--crimson);
+  --color-crimson-deep: var(--crimson-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-parchment: var(--parchment);
+  --color-ink: var(--ink);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-tamil: var(--font-tamil);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--font-body), "Noto Sans Tamil", serif;
+}
+
+.kolam-bg {
+  background-color: #1a080c;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(201, 162, 39, 0.28), transparent 45%),
+    radial-gradient(ellipse at 80% 90%, rgba(165, 28, 48, 0.45), transparent 50%),
+    repeating-radial-gradient(circle at 50% 50%, rgba(201, 162, 39, 0.08) 0 2px, transparent 2px 28px);
+}
+
+.gold-border {
+  border: 1px solid var(--gold);
+  box-shadow: inset 0 0 0 4px rgba(165, 28, 48, 0.15), 0 12px 40px rgba(28, 20, 16, 0.18);
+}
+
+.silk-shimmer {
+  background: linear-gradient(
+    120deg,
+    #a51c30 0%,
+    #c9a227 22%,
+    #a51c30 45%,
+    #e4c96a 70%,
+    #6e1020 100%
+  );
+  background-size: 220% 220%;
+  animation: silk 10s ease-in-out infinite;
+}
+
+@keyframes silk {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float-gold {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(4deg);
+  }
+}
+
+.hero-fallback {
+  animation: float-gold 6s ease-in-out infinite;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
